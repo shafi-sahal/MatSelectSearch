@@ -1,0 +1,9 @@
+<div class="flex-container">
+  <input
+    #input
+    placeholder="Search"
+    (input)="filterList($event)"
+    (keydown)="$event.stopPropagation()">
+    <mat-spinner *ngIf="isLoading" [diameter]="25"></mat-spinner>
+</div>
+<mat-divider></mat-divider>

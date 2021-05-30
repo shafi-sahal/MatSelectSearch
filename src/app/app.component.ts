@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { countries } from '../assets/dataset';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'MatSelectSearch';
+  countries: Record<string, string>[] = countries;
+  filteredCountries: Record<string, string>[] = this.countries;
 }
