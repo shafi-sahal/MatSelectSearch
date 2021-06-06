@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Inject, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Inject, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { MatSelect } from '@angular/material/select';
 import { Subscription } from 'rxjs';
 import { Searcher } from './searcher.service';
@@ -8,7 +8,7 @@ import { Searcher } from './searcher.service';
   templateUrl: './mat-select-search.component.html',
   styleUrls: [ './mat-select-search.scss' ]
 })
-export class MatSelectSearchComponent implements OnInit, OnDestroy {
+export class MatSelectSearchComponent implements AfterViewInit, OnDestroy {
   @Input() list: Record<string, string>[] = [];
   @Input() searchProperties: string[] = [];
   @Input() clearSearchInput = false;
@@ -25,7 +25,7 @@ export class MatSelectSearchComponent implements OnInit, OnDestroy {
       private searcher: Searcher
     ) { }
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     this.fullList = this.list;
     this.searcher.initSearch(this.list, this.searchProperties);
     this.subscriptions
