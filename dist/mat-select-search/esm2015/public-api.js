@@ -1,0 +1,7 @@
+/*
+ * Public API Surface of mat-select-search
+ */
+export * from './lib/searcher.service';
+export * from './lib/mat-select-search.component';
+export * from './lib/mat-select-search.module';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljLWFwaS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3Byb2plY3RzL21hdC1zZWxlY3Qtc2VhcmNoL3NyYy9wdWJsaWMtYXBpLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBOztHQUVHO0FBRUgsY0FBYyx3QkFBd0IsQ0FBQztBQUN2QyxjQUFjLG1DQUFtQyxDQUFDO0FBQ2xELGNBQWMsZ0NBQWdDLENBQUMiLCJzb3VyY2VzQ29udGVudCI6WyIvKlxuICogUHVibGljIEFQSSBTdXJmYWNlIG9mIG1hdC1zZWxlY3Qtc2VhcmNoXG4gKi9cblxuZXhwb3J0ICogZnJvbSAnLi9saWIvc2VhcmNoZXIuc2VydmljZSc7XG5leHBvcnQgKiBmcm9tICcuL2xpYi9tYXQtc2VsZWN0LXNlYXJjaC5jb21wb25lbnQnO1xuZXhwb3J0ICogZnJvbSAnLi9saWIvbWF0LXNlbGVjdC1zZWFyY2gubW9kdWxlJztcbiJdfQ==

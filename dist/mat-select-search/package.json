@@ -1,0 +1,18 @@
+{
+  "name": "mat-select-search",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^12.0.2",
+    "@angular/core": "^12.0.2"
+  },
+  "dependencies": {
+    "tslib": "^2.1.0"
+  },
+  "main": "bundles/mat-select-search.umd.js",
+  "module": "fesm2015/mat-select-search.js",
+  "es2015": "fesm2015/mat-select-search.js",
+  "esm2015": "esm2015/mat-select-search.js",
+  "fesm2015": "fesm2015/mat-select-search.js",
+  "typings": "mat-select-search.d.ts",
+  "sideEffects": false
+}
