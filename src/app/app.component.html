@@ -2,12 +2,11 @@
   <mat-form-field>
     <mat-label>Select a country</mat-label>
     <mat-select #countrySelect>
-      <lib-mat-select-search
+      <mat-select-search
         [list]="countries"
         [searchProperties]="['dialCode', 'name']"
         (filtered)="filteredCountries = $event">
-
-      </lib-mat-select-search>
+      </mat-select-search>
       <mat-select-trigger>{{countrySelect.value}}</mat-select-trigger>
       <mat-option *ngFor="let country of filteredCountries" [value]="country.name">
         <div class="country-container">
