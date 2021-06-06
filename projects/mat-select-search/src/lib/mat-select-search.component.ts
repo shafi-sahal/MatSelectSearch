@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { Searcher } from './searcher.service';
 
 @Component({
-  selector: 'mat-select-search',
+  selector: 'lib-mat-select-search',
   templateUrl: './mat-select-search.component.html',
   styleUrls: [ './mat-select-search.scss' ]
 })
