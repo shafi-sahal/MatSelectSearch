@@ -130,7 +130,7 @@
             this.subscriptions
                 .add(this.matSelect.openedChange
                 .subscribe(function () {
-                var input = document.getElementById('input');
+                var input = _this.element.nativeElement;
                 input.focus();
                 if ((_this.filteredList && _this.filteredList.length === 0 && _this.hasFilteredBefore) || _this.clearSearchInput) {
                     input.value = '';

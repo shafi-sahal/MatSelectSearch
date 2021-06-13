@@ -106,7 +106,7 @@ class MatSelectSearchComponent {
         this.subscriptions
             .add(this.matSelect.openedChange
             .subscribe(() => {
-            const input = document.getElementById('input');
+            const input = this.element.nativeElement;
             input.focus();
             if ((this.filteredList && this.filteredList.length === 0 && this.hasFilteredBefore) || this.clearSearchInput) {
                 input.value = '';
