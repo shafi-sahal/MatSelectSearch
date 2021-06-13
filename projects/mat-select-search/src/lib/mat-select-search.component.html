@@ -1,6 +1,7 @@
 <div class="flex-container">
   <input
     #input
+    id="input"
     placeholder="Search"
     (input)="filterList($event)"
     (keydown)="$event.stopPropagation()">
