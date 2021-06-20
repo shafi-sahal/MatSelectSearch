@@ -6,16 +6,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSelectModule } from '@angular/material/select';
 import {MatCardModule} from '@angular/material/card';
 
-/* 
-  Use 
+/*
+  Use
   import { MatSelectSearchModule } from 'mat-select-search/src/public-api';
-  to use the library. The import below is done from project folders because stackblitz is showing errors when using the above 
+  to use the library. The import below is done from project folders because stackblitz is showing errors when using the above
   import statement. The import statement above works well on the local projects.
 */
 import { MatSelectSearchModule } from '../../projects/mat-select-search/src/public-api';
-
-
-
 
 
 @NgModule({
