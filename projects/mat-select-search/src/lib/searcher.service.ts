@@ -23,6 +23,7 @@ export class Searcher {
       this.list = list;
       this.searchProperty = searchProperties[0];
     }
+    this.previousFilteredList = this.list;
   }
 
   filterList(inputEvent: InputEvent): Record<string, string>[] | undefined {
@@ -35,7 +36,10 @@ export class Searcher {
     const list = this.getList();
     this.previousSearchText = searchTextInLowerCase;
     this.previousInputtype = inputEvent.inputType;
-    if (!list) { return this.previousFilteredList; }
+    if (!list) {
+      this.filteredList = this.previousFilteredList;
+      return this.previousFilteredList;
+    }
     this.filteredList = list.filter(item =>
       removeWhitespaces(item[this.searchProperty]).toLowerCase().includes(this.searchText));
     return this.filteredList;
@@ -49,7 +53,7 @@ export class Searcher {
 
   private getList(): Record<string, string>[] | undefined {
     if (this.previousSearchText && this.searchText.includes(this.previousSearchText)) {
-      if (this.canReturnPreviousFilteredList) { this.previousFilteredList = this.filteredList; }
+      this.previousFilteredList = this.filteredList;
       this.canReturnPreviousFilteredList = true;
       return this.filteredList;
     }
