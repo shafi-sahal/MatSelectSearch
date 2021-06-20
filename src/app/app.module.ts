@@ -9,7 +9,7 @@ import {MatCardModule} from '@angular/material/card';
 /*
   Use
   import { MatSelectSearchModule } from 'mat-select-search/src/public-api';
-  to use the library. The import below is done from project folders because stackblitz is showing errors when using the above
+  to use the library. The import below is done from projects folder because stackblitz is showing errors when using the above
   import statement. The import statement above works well on the local projects.
   I have opened an issue about this on github here: https://github.com/stackblitz/core/issues/1504
 */
