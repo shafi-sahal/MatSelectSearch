@@ -7,7 +7,10 @@ Angular component providing a functionality to search/filter MatSelect options o
 
 ![Screenshot from 2021-06-20 21-56-15](https://user-images.githubusercontent.com/60147182/123517782-89450980-d6c0-11eb-93ea-9f1a352a751e.png)
 
+## Working Demo
+See it in action here: https://stackblitz.com/github/shafi-sahal/MatSelectSearch
 
+## Development
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.0.
 
 ## Development server
