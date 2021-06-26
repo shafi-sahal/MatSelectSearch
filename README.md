@@ -1,5 +1,16 @@
 # MatSelectSearch
 
+github: https://github.com/shafi-sahal/LibMatSelectSearch
+
+## What is it?
+Angular component providing a functionality to search/filter MatSelect options of the Angular Material library
+
+x-special/nautilus-clipboard
+copy
+file:///home/shafi/Pictures/Screenshot%20from%202021-06-20%2021-56-15.png
+![Screenshot from 2021-06-20 21-56-15](https://user-images.githubusercontent.com/60147182/123517782-89450980-d6c0-11eb-93ea-9f1a352a751e.png)
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.0.
 
 ## Development server
