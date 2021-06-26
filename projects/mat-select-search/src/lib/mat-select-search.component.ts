@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Inject, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Inject, Input, OnDestroy, OnInit, Optional, Output, ViewChild } from '@angular/core';
 import { MatOption } from '@angular/material/core';
 import { MatSelect } from '@angular/material/select';
 import { Subscription } from 'rxjs';
@@ -24,12 +24,16 @@ export class MatSelectSearchComponent implements AfterViewInit, OnDestroy {
 
   constructor(
     @Inject(MatSelect) private matSelect: MatSelect,
-    @Inject(MatOption) private matOption: MatOption,
+    @Optional() @Inject(MatOption) private matOption: MatOption,
     private searcher: Searcher,
     ) { }
 
   ngAfterViewInit(): void {
-    if (this.matOption) { this.matOption.disabled = true; }
+    if (!this.matOption) {
+      console.error('<lib-mat-select-search must be placed inside a <mat-option> element');
+      return;
+    }
+    this.matOption.disabled = true;
     this.fullList = this.list;
     this.searcher.initSearch(this.list, this.searchProperties);
     this.subscriptions
