@@ -24,15 +24,16 @@ export class MatSelectSearchComponent implements AfterViewInit, OnDestroy {
 
   constructor(
     @Inject(MatSelect) private matSelect: MatSelect,
-    @Optional() @Inject(MatOption) private matOption: MatOption,
+     @Inject(MatOption) private matOption: MatOption,
     private searcher: Searcher,
     ) { }
 
   ngAfterViewInit(): void {
-    if (!this.matOption) {
+    console.log(this.matOption)
+    /*if (!this.matOption) {
       console.error('<lib-mat-select-search must be placed inside a <mat-option> element');
       return;
-    }
+    }*/
     this.matOption.disabled = true;
     this.fullList = this.list;
     this.searcher.initSearch(this.list, this.searchProperties);
@@ -70,7 +71,6 @@ export class MatSelectSearchComponent implements AfterViewInit, OnDestroy {
   }
 
   stopCharPropagation(event: KeyboardEvent): void {
-    console.log(event.key);
     const key = event.key;
     const isTextControlKey = key === ' ' || key === 'Home' || key === 'End' || (key >= 'a' && key <= 'z');
     if (isTextControlKey) { event.stopPropagation(); }
