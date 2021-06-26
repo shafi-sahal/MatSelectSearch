@@ -4,9 +4,7 @@
     id="input"
     placeholder="Search"
     (input)="filterList($event)"
-    (keydown)="$event.stopPropagation()">
-    <div class="spinner">
-      <mat-spinner *ngIf="isLoading" [diameter]="25"></mat-spinner>
-    </div>
+    (keydown)="stopCharPropagation($event)">
+    <mat-spinner *ngIf="isLoading" [diameter]="25"></mat-spinner>
 </div>
 <mat-divider></mat-divider>

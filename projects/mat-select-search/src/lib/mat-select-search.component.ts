@@ -1,4 +1,5 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, Inject, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Inject, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
+import { MatOption } from '@angular/material/core';
 import { MatSelect } from '@angular/material/select';
 import { Subscription } from 'rxjs';
 import { Searcher } from './searcher.service';
@@ -6,7 +7,8 @@ import { Searcher } from './searcher.service';
 @Component({
   selector: 'lib-mat-select-search',
   templateUrl: './mat-select-search.component.html',
-  styleUrls: [ './mat-select-search.scss' ]
+  styleUrls: [ './mat-select-search.scss' ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MatSelectSearchComponent implements AfterViewInit, OnDestroy {
   @Input() list: Record<string, string>[] = [];
@@ -22,10 +24,12 @@ export class MatSelectSearchComponent implements AfterViewInit, OnDestroy {
 
   constructor(
     @Inject(MatSelect) private matSelect: MatSelect,
-      private searcher: Searcher
+    @Inject(MatOption) private matOption: MatOption,
+    private searcher: Searcher,
     ) { }
 
   ngAfterViewInit(): void {
+    if (this.matOption) { this.matOption.disabled = true; }
     this.fullList = this.list;
     this.searcher.initSearch(this.list, this.searchProperties);
     this.subscriptions
@@ -59,6 +63,13 @@ export class MatSelectSearchComponent implements AfterViewInit, OnDestroy {
       return itemCopy;
     });
     this.filtered.emit(listWithoutConcatedValues);
+  }
+
+  stopCharPropagation(event: KeyboardEvent): void {
+    console.log(event.key);
+    const key = event.key;
+    const isTextControlKey = key === ' ' || key === 'Home' || key === 'End' || (key >= 'a' && key <= 'z');
+    if (isTextControlKey) { event.stopPropagation(); }
   }
 
   ngOnDestroy(): void { this.subscriptions.unsubscribe(); }

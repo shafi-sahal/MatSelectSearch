@@ -1,17 +1,13 @@
 .flex-container {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 input {
   $mat-spinner-width: 25px;
   border: none;
-  width: calc(100% - (#{$mat-spinner-width}));
+  width: calc(100% - #{$mat-spinner-width});
   outline: none;
   margin-top: 2%;
   margin-bottom: 2%;
-  margin-left: 14px;
 }
-.spinner {
-  margin-right: 10px;
-}
-
