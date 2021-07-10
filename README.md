@@ -18,7 +18,7 @@ Install `mat-select-search` in your project:
 Import the MatSelectSearchModule in your app.module.ts or in whichever module you need the library, in case you are using lazy loading:
 
 ```typescript
-import { MatSelectSearchModule } from '../../projects/mat-select-search/src/public-api';
+import { MatSelectSearchModule } from 'mat-select-search';
 
 
 @NgModule({
