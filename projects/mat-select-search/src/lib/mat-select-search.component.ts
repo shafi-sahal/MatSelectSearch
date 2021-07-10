@@ -11,6 +11,8 @@ import { Searcher } from './searcher.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MatSelectSearchComponent implements AfterViewInit, OnDestroy {
+
+  // Send the array which is to be searched/filtered
   @Input() list: Record<string, string>[] = [];
 
   // Send the keys of the object properties that is to be searched/filtered
