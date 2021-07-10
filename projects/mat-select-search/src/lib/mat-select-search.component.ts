@@ -12,10 +12,13 @@ import { Searcher } from './searcher.service';
 })
 export class MatSelectSearchComponent implements AfterViewInit, OnDestroy {
   @Input() list: Record<string, string>[] = [];
+
   // Send the keys of the object properties that is to be searched/filtered
   @Input() searchProperties: string[] = [];
+
   // Make true if input should be cleared on opening
   @Input() clearSearchInput = false;
+
   @Output() filtered = new EventEmitter<Record<string, string>[]>();
   @ViewChild('input', { read: ElementRef, static: true }) element!: ElementRef;
   isLoading = false;
