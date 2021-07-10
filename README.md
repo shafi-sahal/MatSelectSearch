@@ -10,6 +10,54 @@ Angular component providing a functionality to search/filter MatSelect options o
 ## Working Demo
 See it in action here: https://stackblitz.com/github/shafi-sahal/MatSelectSearch
 
+## How to use it?
+Install `mat-select-search` in your project:
+
+`npm install mat-select-search`
+
+Import the MatSelectSearchModule in your app.module.ts or in whichever module you need the library, in case you are using lazy loading:
+
+`import { MatSelectSearchModule } from '../../projects/mat-select-search/src/public-api';
+
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatSelectModule,
+    MatCardModule,
+    MatSelectSearchModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule {}`
+ 
+Use the lib-mat-select-search component inside a mat-select element by placing it inside a <mat-option> element:
+`<mat-card>
+  <mat-form-field>
+    <mat-label>Select a country</mat-label>
+    <mat-select #countrySelect>
+      <mat-option>
+        <lib-mat-select-search
+        [list]="countries"
+        [searchProperties]="['dialCode', 'name']"
+        (filtered)="filteredCountries = $event">
+      </lib-mat-select-search>
+      </mat-option>
+      <mat-select-trigger>{{countrySelect.value}}</mat-select-trigger>
+      <mat-option *ngFor="let country of filteredCountries" [value]="country.name">
+        <div class="country-container">
+          <p>{{country.name}}</p><p>{{country.dialCode}}</p>
+        </div>
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-card>`
+
 ## Development
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.0.
 
