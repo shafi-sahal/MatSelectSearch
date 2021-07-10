@@ -64,6 +64,19 @@ Use the lib-mat-select-search component inside a mat-select element by placing i
 </mat-card>
   
 ```
+Pass the list to be filtered to the 'list' input.
+Pass the keys of the object properties to be searched in the 'searchProperties' input.
+Get the filtered list from output 'filtered'.
+  
+While passing searchProperties, pass it in the order you want the search to work:
+  
+``` [searchProperties] = "['dialCode', 'name']" ```
+  
+The above code will give 'India' on search 'India' or '+91' or '+91India' from the countries list. Case and space does not matter.
+  
+``` [searchProperties] = "['name', 'dialCode']" ```
+  
+ The above code will give 'India' on search 'India' or '+91' or 'India+91' from the countries list. Case and space does not matter.
 
 ## Development
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.0.
