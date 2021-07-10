@@ -17,7 +17,7 @@ Install `mat-select-search` in your project:
 
 Import the MatSelectSearchModule in your app.module.ts or in whichever module you need the library, in case you are using lazy loading:
 
-https://gist.github.com/shafi-sahal/d43c85b53d02f4324c29d3f5a5765bc5
+{% gist d43c85b53d02f4324c29d3f5a5765bc5 %}
  
 Use the lib-mat-select-search component inside a mat-select element by placing it inside a <mat-option> element:
 `<mat-card>
