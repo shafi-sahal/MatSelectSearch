@@ -76,7 +76,21 @@ The above code will give 'India' on search 'India' or '+91' or '+91India' from t
   
 ``` [searchProperties] = "['name', 'dialCode']" ```
   
- The above code will give 'India' on search 'India' or '+91' or 'India+91' from the countries list. Case and space does not matter.
+The above code will give 'India' on search 'India' or '+91' or 'India+91' from the countries list. Case and space does not matter.
+  
+## Inputs 
+  
+```typescript
+  // Send the array which is to be searched/filtered
+  @Input() list: Record<string, string>[] = [];
+
+  // Send the keys of the object properties that is to be searched/filtered
+  @Input() searchProperties: string[] = [];
+
+  // Make true if input should be cleared on opening
+  @Input() clearSearchInput = false;  
+  
+```
 
 ## Development
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.0.
