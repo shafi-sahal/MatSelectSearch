@@ -38,10 +38,11 @@ import { MatSelectSearchModule } from 'mat-select-search';
 export class AppModule {}
 
 ```
-
  
 Use the lib-mat-select-search component inside a mat-select element by placing it inside a <mat-option> element:
-`<mat-card>
+
+```html
+<mat-card>
   <mat-form-field>
     <mat-label>Select a country</mat-label>
     <mat-select #countrySelect>
@@ -60,7 +61,9 @@ Use the lib-mat-select-search component inside a mat-select element by placing i
       </mat-option>
     </mat-select>
   </mat-form-field>
-</mat-card>`
+</mat-card>
+  
+```
 
 ## Development
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.0.
