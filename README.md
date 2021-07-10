@@ -10,6 +10,88 @@ Angular component providing a functionality to search/filter MatSelect options o
 ## Working Demo
 See it in action here: https://stackblitz.com/github/shafi-sahal/MatSelectSearch
 
+## How to use it?
+Install `mat-select-search` in your project:
+
+`npm install mat-select-search`
+
+Import the MatSelectSearchModule in your app.module.ts or in whichever module you need the library, in case you are using lazy loading:
+
+```typescript
+import { MatSelectSearchModule } from 'mat-select-search';
+
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatSelectModule,
+    MatCardModule,
+    MatSelectSearchModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule {}
+
+```
+ 
+Use the lib-mat-select-search component inside a mat-select element by placing it inside a <mat-option> element:
+
+```html
+<mat-card>
+  <mat-form-field>
+    <mat-label>Select a country</mat-label>
+    <mat-select #countrySelect>
+      <mat-option>
+        <lib-mat-select-search
+        [list]="countries"
+        [searchProperties]="['dialCode', 'name']"
+        (filtered)="filteredCountries = $event">
+      </lib-mat-select-search>
+      </mat-option>
+      <mat-select-trigger>{{countrySelect.value}}</mat-select-trigger>
+      <mat-option *ngFor="let country of filteredCountries" [value]="country.name">
+        <div class="country-container">
+          <p>{{country.name}}</p><p>{{country.dialCode}}</p>
+        </div>
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-card>
+  
+```
+Pass the list to be filtered to the 'list' input.
+Pass the keys of the object properties to be searched in the 'searchProperties' input.
+Get the filtered list from output 'filtered'.
+  
+While passing searchProperties, pass it in the order you want the search to work:
+  
+``` [searchProperties] = "['dialCode', 'name']" ```
+  
+The above code will give 'India' on search 'India' or '+91' or '+91India' from the countries list. Case and space does not matter.
+  
+``` [searchProperties] = "['name', 'dialCode']" ```
+  
+The above code will give 'India' on search 'India' or '+91' or 'India+91' from the countries list. Case and space does not matter.
+  
+## Inputs 
+  
+```typescript
+  // Send the array which is to be searched/filtered
+  @Input() list: Record<string, string>[] = [];
+
+  // Send the keys of the object properties that is to be searched/filtered
+  @Input() searchProperties: string[] = [];
+
+  // Make true if input should be cleared on opening
+  @Input() clearSearchInput = false;  
+  
+```
+
 ## Development
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.0.
 
