@@ -1,6 +1,6 @@
 # MatSelectSearch
 
-github: https://github.com/shafi-sahal/LibMatSelectSearch
+github: https://github.com/shafi-sahal/MatSelectSearch
 
 ## What is it?
 Angular component providing a functionality to search/filter MatSelect options of the Angular Material library
