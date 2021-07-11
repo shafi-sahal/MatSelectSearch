@@ -11,7 +11,7 @@ export class Searcher {
   private previousInputtype = '';
   private filteredList: Record<string, string>[] = [];
   private previousFilteredList: Record<string, string>[] = [];
-  private canReturnPreviousFilteredList = true;
+  private shouldReturnPreviousFilteredList = true;
 
   initSearch(list: Record<string, string>[], searchProperties: string[]): void {
     if (searchProperties.length > 1) {
@@ -54,16 +54,16 @@ export class Searcher {
   private getList(): Record<string, string>[] | undefined {
     if (this.previousSearchText && this.searchText.includes(this.previousSearchText)) {
       this.previousFilteredList = this.filteredList;
-      this.canReturnPreviousFilteredList = true;
+      this.shouldReturnPreviousFilteredList = true;
       return this.filteredList;
     }
 
     const isLastTextFromPaste = this.previousInputtype === 'insertFromPaste';
     const canReturnPreviousFilteredList = this.isBackSpacedLastChar() &&
-     !isLastTextFromPaste && this.canReturnPreviousFilteredList;
+     !isLastTextFromPaste && this.shouldReturnPreviousFilteredList;
 
     if (canReturnPreviousFilteredList) {
-      this.canReturnPreviousFilteredList = false;
+      this.shouldReturnPreviousFilteredList = false;
       return;
     }
     return this.list;
