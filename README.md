@@ -39,7 +39,7 @@ export class AppModule {}
 
 ```
  
-Use the lib-mat-select-search component inside a mat-select element by placing it inside a <mat-option> element:
+Use the ```lib-mat-select-search``` component inside a ```mat-select``` element by placing it inside a ```<mat-option>``` element:
 
 ```html
 <mat-card>
