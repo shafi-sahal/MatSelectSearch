@@ -1,7 +1,7 @@
 <mat-card>
   <mat-form-field>
     <mat-label>Select a country</mat-label>
-    <mat-select #countrySelect>
+    <mat-select #countrySelect multiple>
       <mat-option>
         <lib-mat-select-search
         [list]="countries"
@@ -12,7 +12,7 @@
       <mat-select-trigger>{{countrySelect.value}}</mat-select-trigger>
       <mat-option *ngFor="let country of filteredCountries" [value]="country.name">
         <div class="country-container">
-          <p>{{country.name}}</p><p>{{country.dialCode}}</p>
+          <span>{{country.name}}</span><span>{{country.dialCode}}</span>
         </div>
       </mat-option>
     </mat-select>
