@@ -77,6 +77,46 @@ The above code will give 'India' on search 'India' or '+91' or '+91India' from t
 ``` [searchProperties] = "['name', 'dialCode']" ```
   
 The above code will give 'India' on search 'India' or '+91' or 'India+91' from the countries list. Case and space does not matter.
+
+## How to use with 'Select All' option with mat-select multiple attribute
+
+Make a new mat-option for your 'Select All' option 
+
+```<mat-option>Select All</mat-option>```
+
+Place it below the ```<lib-mat-select-search-component>```
+
+```
+<mat-card>
+  <mat-form-field>
+    <mat-label>Select a country</mat-label>
+    <mat-select #countrySelect multiple>
+      <mat-select-trigger>{{countrySelect.value}}</mat-select-trigger>
+
+      <mat-option>
+        <lib-mat-select-search
+          [list]="countries"
+          [searchProperties]="['dialCode', 'name']"
+          (filtered)="filteredCountries = $event"
+          [hasSelectAll]="true">
+        </lib-mat-select-search>
+      </mat-option>
+
+      <mat-option>Select All</mat-option>
+
+      <mat-option *ngFor="let country of filteredCountries" [value]="country.name">
+        <div class="country-container">
+          <span>{{country.name}}</span><span>{{country.dialCode}}</span>
+        </div>
+      </mat-option>
+
+    </mat-select>
+  </mat-form-field>
+</mat-card>
+`
+`
+![Screenshot from 2021-07-19 16-15-53](https://user-images.githubusercontent.com/60147182/126148676-488ba629-16fd-4d69-a0fd-0066bed8e43c.png)``
+
   
 ## Inputs 
   
