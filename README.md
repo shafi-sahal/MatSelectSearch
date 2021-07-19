@@ -92,7 +92,7 @@ Make a new mat-option for your 'Select All' option
 Place it below the ```<lib-mat-select-search-component>``` and set ```[hasSelectAll]="true"``` on ```<lib-mat-select-search>```
 
 
-```typescript
+```html
 <mat-card>
   <mat-form-field>
     <mat-label>Select a country</mat-label>
