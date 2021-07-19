@@ -31,7 +31,6 @@ export class MatSelectSearchComponent implements AfterViewInit, OnDestroy {
   private fullList: Record<string, string>[] = [];
   private hasFilteredBefore = false;
   private subscriptions = new Subscription();
-  private checkedSelectAll = false;
   private clickListenerSelectAll = () => {};
 
   constructor(
@@ -122,5 +121,8 @@ export class MatSelectSearchComponent implements AfterViewInit, OnDestroy {
     }
   }
 
-  ngOnDestroy(): void { this.subscriptions.unsubscribe(); }
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
+    this.clickListenerSelectAll();
+  }
 }
