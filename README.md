@@ -46,22 +46,26 @@ Use the ```lib-mat-select-search``` component inside a ```mat-select``` element 
   <mat-form-field>
     <mat-label>Select a country</mat-label>
     <mat-select #countrySelect>
+      <mat-select-trigger>{{countrySelect.value}}</mat-select-trigger>
+
       <mat-option>
         <lib-mat-select-search
-        [list]="countries"
-        [searchProperties]="['dialCode', 'name']"
-        (filtered)="filteredCountries = $event">
-      </lib-mat-select-search>
+          [list]="countries"
+          [searchProperties]="['dialCode', 'name']"
+          (filtered)="filteredCountries = $event">
+        </lib-mat-select-search>
       </mat-option>
-      <mat-select-trigger>{{countrySelect.value}}</mat-select-trigger>
+
       <mat-option *ngFor="let country of filteredCountries" [value]="country.name">
         <div class="country-container">
-          <p>{{country.name}}</p><p>{{country.dialCode}}</p>
+          <span>{{country.name}}</span><span>{{country.dialCode}}</span>
         </div>
       </mat-option>
+
     </mat-select>
   </mat-form-field>
 </mat-card>
+
   
 ```
 
@@ -132,6 +136,9 @@ Place it below the ```<lib-mat-select-search-component>``` and set ```[hasSelect
 
   // Make true if input should be cleared on opening
   @Input() clearSearchInput = false;  
+  
+  // Make true if there is a mat-option for selecting all values
+  @Input() hasSelectAll = false;
   
 ```
 
