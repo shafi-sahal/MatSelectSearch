@@ -64,6 +64,7 @@ Use the ```lib-mat-select-search``` component inside a ```mat-select``` element 
 </mat-card>
   
 ```
+
 Pass the list to be filtered to the 'list' input.
 Pass the keys of the object properties to be searched in the 'searchProperties' input.
 Get the filtered list from output 'filtered'.
@@ -84,7 +85,8 @@ Make a new mat-option for your 'Select All' option
 
 ```<mat-option>Select All</mat-option>```
 
-Place it below the ```<lib-mat-select-search-component>```
+Place it below the ```<lib-mat-select-search-component>``` and set [hasSelectAll]="true" on ```<lib-mat-select-search>```
+
 
 ```
 <mat-card>
