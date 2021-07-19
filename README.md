@@ -85,7 +85,7 @@ Make a new mat-option for your 'Select All' option
 
 ```<mat-option>Select All</mat-option>```
 
-Place it below the ```<lib-mat-select-search-component>``` and set [hasSelectAll]="true" on ```<lib-mat-select-search>```
+Place it below the ```<lib-mat-select-search-component>``` and set ```[hasSelectAll]="true"``` on ```<lib-mat-select-search>```
 
 
 ```
@@ -115,8 +115,9 @@ Place it below the ```<lib-mat-select-search-component>``` and set [hasSelectAll
     </mat-select>
   </mat-form-field>
 </mat-card>
-`
-`
+
+```
+
 ![Screenshot from 2021-07-19 16-15-53](https://user-images.githubusercontent.com/60147182/126148676-488ba629-16fd-4d69-a0fd-0066bed8e43c.png)``
 
   
