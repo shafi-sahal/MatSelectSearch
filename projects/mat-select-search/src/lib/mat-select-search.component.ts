@@ -102,7 +102,6 @@ export class MatSelectSearchComponent implements AfterViewInit, OnDestroy {
     const nativeSelectAll = selectAll._getHostElement();
 
     this.clickListenerSelectAll = this.renderer.listen(nativeSelectAll, 'click', () => {
-      const matOptions = this.matSelect.options;
       if (selectAll.selected) this.selectAllOptions(); else this.deselectAllOptions();
     });
   }
