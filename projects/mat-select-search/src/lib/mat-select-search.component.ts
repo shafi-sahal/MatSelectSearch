@@ -95,6 +95,9 @@ export class MatSelectSearchComponent implements AfterViewInit, OnDestroy {
     this.renderer.removeChild(nativeMatOption, checkBox);
 
     if (this.hasSelectAll) this.enableSelectAll();
+
+  console.log(this.matSelect.options.toArray()[0]._getHostElement().style.cssText = 'position:sticky; top:0; z-index: 1; background-color:white;');
+  //this.matSelect.options.toArray()[1]._getHostElement().style.cssText = 'margin-top: 60px;'
   }
 
   private enableSelectAll(): void {
