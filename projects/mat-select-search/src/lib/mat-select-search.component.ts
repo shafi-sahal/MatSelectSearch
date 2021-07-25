@@ -8,7 +8,7 @@ import { Searcher } from './searcher.service';
   selector: 'lib-mat-select-search',
   templateUrl: './mat-select-search.component.html',
   styleUrls: [ './mat-select-search.scss' ],
-  //changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MatSelectSearchComponent implements AfterViewInit, OnDestroy {
 
