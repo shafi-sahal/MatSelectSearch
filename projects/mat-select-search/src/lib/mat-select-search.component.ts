@@ -108,16 +108,12 @@ export class MatSelectSearchComponent implements AfterViewInit, OnDestroy {
 
   private selectAllOptions(): void {
     const matOptions = this.matSelect.options;
-    for (let i = 2; i < matOptions.length; i++) {
-      matOptions.toArray()[i].select()
-    }
+    for (let i = 2; i < matOptions.length; i++) matOptions.toArray()[i].select();
   }
 
   private deselectAllOptions(): void {
     const matOptions = this.matSelect.options;
-    for (let i = 2; i < matOptions.length; i++) {
-      matOptions.toArray()[i].deselect()
-    }
+    for (let i = 2; i < matOptions.length; i++) matOptions.toArray()[i].deselect();
   }
 
   ngOnDestroy(): void {
