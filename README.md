@@ -140,6 +140,9 @@ Place it below the ```<lib-mat-select-search-component>``` and set ```[hasSelect
   // Make true if there is a mat-option for selecting all values
   @Input() hasSelectAll = false;
   
+  // Make true if it is needed to fix the search bar on top while scrolling.
+  @Input() fixOnTop = false;
+  
 ```
 
 ## Development
