@@ -24,6 +24,9 @@ export class MatSelectSearchComponent implements AfterViewInit, OnDestroy {
   // Make true if there is a mat-option for selecting all values
   @Input() hasSelectAll = false;
 
+  // Make true if it is needed to fix the search bar on top while scrolling.
+  @Input() fixOnTop = false;
+
   @Output() filtered = new EventEmitter<Record<string, string>[]>();
   @ViewChild('input', { read: ElementRef, static: true }) element!: ElementRef;
   isLoading = false;
@@ -95,9 +98,7 @@ export class MatSelectSearchComponent implements AfterViewInit, OnDestroy {
     this.renderer.removeChild(nativeMatOption, checkBox);
 
     if (this.hasSelectAll) this.enableSelectAll();
-
-  console.log(this.matSelect.options.toArray()[0]._getHostElement().style.cssText = 'position:sticky; top:0; z-index: 1; background-color:white;');
-  //this.matSelect.options.toArray()[1]._getHostElement().style.cssText = 'margin-top: 60px;'
+    if (this.fixOnTop) this.fixSearchBarOnTopWhileScroll();
   }
 
   private enableSelectAll(): void {
@@ -117,6 +118,14 @@ export class MatSelectSearchComponent implements AfterViewInit, OnDestroy {
   private deselectAllOptions(): void {
     const matOptions = this.matSelect.options;
     for (let i = 2; i < matOptions.length; i++) matOptions.toArray()[i].deselect();
+  }
+
+  private fixSearchBarOnTopWhileScroll(): void {
+    const searchBar = this.matSelect.options.toArray()[0]._getHostElement();
+    this.renderer.setStyle(searchBar, 'position', 'sticky');
+    this.renderer.setStyle(searchBar, 'top', '0');
+    this.renderer.setStyle(searchBar, 'z-index', '1');
+    this.renderer.setStyle(searchBar, 'background-color', 'white');
   }
 
   ngOnDestroy(): void {
