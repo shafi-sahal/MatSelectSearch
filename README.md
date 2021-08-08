@@ -145,6 +145,11 @@ Place it below the ```<lib-mat-select-search-component>``` and set ```[hasSelect
   
 ```
 
+## Support Development
+### Contributions
+Contributions are welcome, just open an issue and file a pull request.
+Feedback and suggestions are also welcome, just mail me at: shafisahal99@gmail.com
+
 ## Development
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.0.
 
