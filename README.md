@@ -10,7 +10,7 @@ Angular component providing a functionality to search/filter MatSelect options o
 ## Working Demo
 See it in action here: https://stackblitz.com/github/shafi-sahal/MatSelectSearch
 
-This project has been deceloped in response to the github issue: https://github.com/angular/material2/issues/5697
+This project has been developed in response to the github issue: https://github.com/angular/material2/issues/5697
 
 ## How to use it?
 Install `mat-select-search` in your project:
