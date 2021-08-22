@@ -155,7 +155,7 @@ Feedback and suggestions are also welcome, just mail me at: shafisahal99@gmail.c
 
 MatSelectSearch and it's services are free of cost. Any bug reports will be assessed and fixed quickly without any cost. However if you feel this project has helped you, saved some time or had an impact in your business or projects, kindly consider making a donation to support the maintenance and further development of the project. Whatever the amount, we value it, be it small or big.
 
-[![PayPal](https://www.paypalobjects.com/en_US/CH/i/btn/btn_donateCC_LG.gif)]
+[![PayPal](https://www.paypalobjects.com/en_US/CH/i/btn/btn_donateCC_LG.gif)](https://paypal.me/iamshafisahal?locale.x=en_GB)
 
 ## Development
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.0.
