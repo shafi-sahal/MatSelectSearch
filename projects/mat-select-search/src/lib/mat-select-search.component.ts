@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Inject, Input, OnDestroy, OnInit, Optional, Output, Renderer2, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Inject, Input, OnDestroy,Optional, Output, Renderer2, ViewChild } from '@angular/core';
 import { MatOption } from '@angular/material/core';
 import { MatSelect } from '@angular/material/select';
 import { Subscription } from 'rxjs';
@@ -20,6 +20,9 @@ export class MatSelectSearchComponent implements AfterViewInit, OnDestroy {
 
   // Make true if input should be cleared on opening
   @Input() clearSearchInput = false;
+
+   // Make true if there is need to emit the filtered list on initial load
+   @Input() initializeFilteredList = false;
 
   // Make true if there is a mat-option for selecting all values
   @Input() hasSelectAll = false;
@@ -43,9 +46,11 @@ export class MatSelectSearchComponent implements AfterViewInit, OnDestroy {
     private searcher: Searcher,
     ) { }
 
+
   ngAfterViewInit(): void {
     this.configMatOption();
     this.fullList = this.list;
+    this.initializeFilteredListonLoad();
     this.searcher.initSearch(this.list, this.searchProperties);
     this.subscriptions
       .add(this.matSelect.openedChange
@@ -99,6 +104,13 @@ export class MatSelectSearchComponent implements AfterViewInit, OnDestroy {
 
     if (this.hasSelectAll) this.enableSelectAll();
     if (this.fixOnTop) this.fixSearchBarOnTopWhileScroll();
+  }
+
+  private initializeFilteredListonLoad(){
+    if (this.initializeFilteredList) {
+      //using timeout to avoid expression has changed error
+      setTimeout(()=> this.filtered.emit(this.fullList));
+    }
   }
 
   private enableSelectAll(): void {
