@@ -8,7 +8,8 @@ import { Searcher } from './searcher.service';
   selector: 'lib-mat-select-search',
   templateUrl: './mat-select-search.component.html',
   styleUrls: [ './mat-select-search.scss' ],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [Searcher]
 })
 export class MatSelectSearchComponent implements AfterViewInit, OnDestroy {
 
@@ -21,8 +22,8 @@ export class MatSelectSearchComponent implements AfterViewInit, OnDestroy {
   // Make true if input should be cleared on opening
   @Input() clearSearchInput = false;
 
-   // Make true if there is need to emit the filtered list on initial load
-   @Input() initializeFilteredList = false;
+  // Make true if there is need to emit the filtered list on initial load
+  @Input() initializeFilteredList = false;
 
   // Make true if there is a mat-option for selecting all values
   @Input() hasSelectAll = false;
@@ -45,7 +46,6 @@ export class MatSelectSearchComponent implements AfterViewInit, OnDestroy {
     private renderer: Renderer2,
     private searcher: Searcher,
     ) { }
-
 
   ngAfterViewInit(): void {
     this.configMatOption();
@@ -106,7 +106,7 @@ export class MatSelectSearchComponent implements AfterViewInit, OnDestroy {
     if (this.fixOnTop) this.fixSearchBarOnTopWhileScroll();
   }
 
-  private initializeFilteredListonLoad(){
+  private initializeFilteredListonLoad(){console.log('init');
     if (this.initializeFilteredList) {
       //using timeout to avoid expression has changed error
       setTimeout(()=> this.filtered.emit(this.fullList));

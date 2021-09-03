@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class Searcher {
   private list: Record<string, string>[] = [];
   private searchProperty = '';
