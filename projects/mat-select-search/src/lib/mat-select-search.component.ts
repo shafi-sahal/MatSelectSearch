@@ -106,7 +106,7 @@ export class MatSelectSearchComponent implements AfterViewInit, OnDestroy {
     if (this.fixOnTop) this.fixSearchBarOnTopWhileScroll();
   }
 
-  private initializeFilteredListonLoad(){console.log('init');
+  private initializeFilteredListonLoad(){
     if (this.initializeFilteredList) {
       //using timeout to avoid expression has changed error
       setTimeout(()=> this.filtered.emit(this.fullList));
