@@ -3,6 +3,7 @@
     #input
     id="input"
     placeholder="Search"
+    autocomplete="off"
     (input)="filterList($event)"
     (keydown)="stopCharPropagation($event)">
     <mat-spinner *ngIf="isLoading" [diameter]="25"></mat-spinner>
