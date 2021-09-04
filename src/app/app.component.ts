@@ -1,5 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
-import { MatOption } from '@angular/material/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { countries } from '../assets/dataset';
 
 @Component({
@@ -8,14 +7,7 @@ import { countries } from '../assets/dataset';
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent implements AfterViewInit {
-  ngAfterViewInit(): void {
-  //  console.log(this.all.select());
-  }
+export class AppComponent {
   countries: Record<string, string>[] = countries;
   filteredCountries: Record<string, string>[] = this.countries;
-  @ViewChild('all') all!: MatOption;
-  g() {
-
-  }
 }
