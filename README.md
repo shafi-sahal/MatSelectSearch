@@ -158,13 +158,6 @@ Feedback and suggestions are also welcome, just mail me at: shafisahal99@gmail.c
 
 MatSelectSearch and it's services are free of cost. Any bug reports will be assessed and fixed quickly without any cost. However if you feel this project has helped you, saved some time or had an impact in your business or projects, kindly consider making a donation to support the maintenance and further development of the project. Whatever the amount, we value it, be it small or big.
 
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="4JYPS5LQGHUDY">
-<input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online!">
-<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
-</form>
-
 [![PayPal](https://www.paypalobjects.com/en_US/CH/i/btn/btn_donateCC_LG.gif)](https://paypal.me/iamshafisahal?locale.x=en_GB)
 
 ## Development
