@@ -139,9 +139,6 @@ Place it below the ```<lib-mat-select-search-component>``` and set ```[hasSelect
   // Make true if input should be cleared on opening
   @Input() clearSearchInput = false;
   
-  // Make true if there is need to emit the filtered list on initial load
-  @Input() initializeFilteredList = false;
-  
   // Make true if there is a mat-option for selecting all values
   @Input() hasSelectAll = false;
   
