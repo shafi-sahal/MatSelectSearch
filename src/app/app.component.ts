@@ -9,5 +9,5 @@ import { countries } from '../assets/dataset';
 })
 export class AppComponent {
   countries: Record<string, string>[] = countries;
-  filteredCountries: Record<string, string>[] = this.countries;
+  filteredCountries: Record<string, string>[] = []
 }
