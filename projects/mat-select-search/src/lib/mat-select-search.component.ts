@@ -54,6 +54,8 @@ export class MatSelectSearchComponent implements AfterViewInit, OnDestroy {
     ) { }
 
   ngAfterViewInit(): void {
+    // If there is option to select all options then it should support multi select
+    if (this.hasSelectAll) this.isMultiSelect = true;
     this.configMatOption();
     this.fullList = this.list;
     this.searcher.initSearch(this.list, this.searchProperties);
