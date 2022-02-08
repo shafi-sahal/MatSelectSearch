@@ -12,6 +12,9 @@ See it in action here: https://stackblitz.com/github/shafi-sahal/MatSelectSearch
 
 This project has been developed in response to the github issue: https://github.com/angular/material2/issues/5697
 
+## Why MatSelectSearch?
+To know the story behind MatSelectSearch and to have a detailed guide on it's usage, visit: https://medium.com/geekculture/implementing-a-search-bar-for-filtering-select-dropdowns-in-angular-63b1f2033737
+
 ## How to use it?
 Install `mat-select-search` in your project:
 
