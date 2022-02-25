@@ -142,6 +142,9 @@ Place it below the ```<lib-mat-select-search-component>``` and set ```[hasSelect
   // Make true if input should be cleared on opening
   @Input() clearSearchInput = false;
   
+  // Make true if mat-select has multiple attribute with true value
+  @Input() isMultiSelect = false;
+  
   // Make true if there is a mat-option for selecting all values
   @Input() hasSelectAll = false;
   
