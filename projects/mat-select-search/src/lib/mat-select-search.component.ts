@@ -73,6 +73,7 @@ export class MatSelectSearchComponent
     if (changes.list && Array.isArray(changes.list.currentValue)) {
       this.fullList = this.list;
       this.searcher.initSearch(this.list, this.searchProperties);
+      this.filtered.emit(this.fullList);
     }
   }
 
