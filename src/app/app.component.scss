@@ -4,6 +4,8 @@ mat-card {
   width: 80%;
   margin-right: auto;
   margin-left: auto;
+  flex-direction: column;
+  align-items: flex-end;
 }
 mat-form-field {
   width: 100%;
