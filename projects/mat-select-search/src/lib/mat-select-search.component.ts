@@ -62,34 +62,37 @@ export class MatSelectSearchComponent implements AfterViewInit, OnDestroy {
     this.configMatOption();
     this.fullList = this.list;
     this.searcher.initSearch(this.list, this.searchProperties);
-    this.subscriptions.add(this.matSelect.openedChange.subscribe(() => {
-        const input = this.element.nativeElement;
-        input.focus();
-        if ((this.filteredList && this.filteredList.length === 0 && this.hasFilteredBefore) || this.clearSearchInput) {
-          input.value = '';
-          this.filtered.emit(this.fullList);
-        }
-    }))
-    .add(this.filtered.subscribe(() => this.isLoading = false))
-    .add(this.matSelect.stateChanges.pipe(filter(() => this.hasSelectAll))
-      .subscribe(() => {
-        const matOptions = this.matSelect.options.toArray();
-        const selectAll = matOptions[INDEX_SELECT_ALL]._getHostElement();
-        if (matOptions.length > NON_ITEM_OPTIONS_COUNT) {
-          this.renderer.setStyle(selectAll, 'display', 'flex');
-        } else {
-          this.renderer.setStyle(selectAll, 'display', 'none')
-        }
+      this.subscriptions.add(this.matSelect.openedChange.subscribe(() => {
+          const input = this.element.nativeElement;
+          input.focus();
+          if ((this.filteredList && this.filteredList.length === 0 && this.hasFilteredBefore) || this.clearSearchInput) {
+              input.value = '';
+              this.filtered.emit(this.fullList);
+          }
+      }));
+      this.subscriptions
+          .add(this.filtered.subscribe(() => (this.isLoading = false)));
+      this.subscriptions.add(
+        this.matSelect.stateChanges
+          .pipe(filter(() => this.hasSelectAll))
+          .subscribe(() => {
+            const matOptions = this.matSelect.options.toArray();
+            const selectAll = matOptions[INDEX_SELECT_ALL]._getHostElement();
+            if (matOptions.length > NON_ITEM_OPTIONS_COUNT) {
+              this.renderer.setStyle(selectAll, 'display', 'flex');
+            } else {
+              this.renderer.setStyle(selectAll, 'display', 'none');
+            }
 
-        const items = matOptions.slice(NON_ITEM_OPTIONS_COUNT);
-        const isAllItemsSelected = items.every(item => item.selected);
-        if (isAllItemsSelected && items.length > NON_ITEM_OPTIONS_COUNT) {
-          this.selectNativeSelectAllCheckbox();
-        } else {
-          this.deselectNativeSelectAllCheckbox();
-        }
-      })
-    );
+            const items = matOptions.slice(NON_ITEM_OPTIONS_COUNT);
+            const isAllItemsSelected = items.every(item => item.selected);
+            if (isAllItemsSelected && items.length > NON_ITEM_OPTIONS_COUNT) {
+              this.selectNativeSelectAllCheckbox();
+            } else {
+              this.deselectNativeSelectAllCheckbox();
+            }
+          })
+      );
 
     setTimeout(() => this.filtered.emit(this.fullList));
   }
