@@ -35,6 +35,9 @@ export class MatSelectSearchComponent implements AfterViewInit, OnDestroy {
   // Make true if it is needed to fix the search bar on top while scrolling.
   @Input() fixOnTop = false;
 
+  // Custom the placeholder of search area
+  @Input() searchPlaceHolder: string = 'Search';
+
   @Output() filtered = new EventEmitter<Record<string, string>[]>();
   @ViewChild('input', { read: ElementRef, static: true }) element!: ElementRef;
   isLoading = false;
