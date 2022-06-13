@@ -1,4 +1,19 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Inject, Input, OnDestroy,Optional, Output, Renderer2, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Inject,
+  Input,
+  OnDestroy,
+  Optional,
+  OnChanges,
+  Output,
+  Renderer2,
+  ViewChild,
+  SimpleChanges,
+} from '@angular/core';
 import { MatOption } from '@angular/material/core';
 import { MatSelect } from '@angular/material/select';
 import { Subscription } from 'rxjs';
@@ -11,12 +26,13 @@ const INDEX_SELECT_ALL = 1;
 @Component({
   selector: 'lib-mat-select-search',
   templateUrl: './mat-select-search.component.html',
-  styleUrls: [ './mat-select-search.scss' ],
+  styleUrls: ['./mat-select-search.scss'],
   //changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [Searcher]
+  providers: [Searcher],
 })
-export class MatSelectSearchComponent implements AfterViewInit, OnDestroy {
-
+export class MatSelectSearchComponent
+  implements AfterViewInit, OnDestroy, OnChanges
+{
   // Send the array which is to be searched/filtered
   @Input() list: Record<string, string>[] = [];
 
@@ -26,7 +42,7 @@ export class MatSelectSearchComponent implements AfterViewInit, OnDestroy {
   // Make true if input should be cleared on opening
   @Input() clearSearchInput = false;
 
-   // Make true if mat-select has multiple attribute with true value
+  // Make true if mat-select has multiple attribute with true value
   @Input() isMultiSelect = false;
 
   // Make true if there is a mat-option for selecting all values
@@ -53,8 +69,16 @@ export class MatSelectSearchComponent implements AfterViewInit, OnDestroy {
     @Inject(MatSelect) private matSelect: MatSelect,
     @Optional() @Inject(MatOption) private matOption: MatOption,
     private renderer: Renderer2,
-    private searcher: Searcher,
-    ) { }
+    private searcher: Searcher
+  ) {}
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.list && Array.isArray(changes.list.currentValue)) {
+      this.fullList = this.list;
+      this.searcher.initSearch(this.list, this.searchProperties);
+      this.filtered.emit(this.fullList);
+    }
+  }
 
   ngAfterViewInit(): void {
     // If there is option to select all options then it should support multi select
@@ -244,4 +268,3 @@ export class MatSelectSearchComponent implements AfterViewInit, OnDestroy {
     this.subscriptions.unsubscribe();
     this.clickListenerSelectAll();
   }
-}

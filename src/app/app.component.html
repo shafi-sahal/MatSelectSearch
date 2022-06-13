@@ -2,22 +2,29 @@
   <mat-form-field>
     <mat-label>Select a country</mat-label>
     <mat-select #countrySelect>
-      <mat-select-trigger>{{countrySelect.value}}</mat-select-trigger>
+      <mat-select-trigger>{{ countrySelect.value }}</mat-select-trigger>
 
       <mat-option>
         <lib-mat-select-search
           [list]="countries"
           [searchProperties]="['dialCode', 'name']"
-          (filtered)="filteredCountries = $event">
+          (filtered)="filteredCountries = $event"
+        >
         </lib-mat-select-search>
       </mat-option>
 
-      <mat-option *ngFor="let country of filteredCountries" [value]="country.name">
+      <mat-option
+        *ngFor="let country of filteredCountries"
+        [value]="country.name"
+      >
         <div class="country-container">
-          <span>{{country.name}}</span><span>{{country.dialCode}}</span>
+          <span>{{ country.name }}</span
+          ><span>{{ country.dialCode }}</span>
         </div>
       </mat-option>
-
     </mat-select>
   </mat-form-field>
+  <div>
+    <button mat-button (click)="randomizeOrder()">Randomize</button>
+  </div>
 </mat-card>
