@@ -51,6 +51,9 @@ export class MatSelectSearchComponent
   // Make true if it is needed to fix the search bar on top while scrolling.
   @Input() fixOnTop = false;
 
+  // Custom the placeholder of search area
+  @Input() searchPlaceHolder: string = 'Search';
+
   @Output() filtered = new EventEmitter<Record<string, string>[]>();
   @ViewChild('input', { read: ElementRef, static: true }) element!: ElementRef;
   isLoading = false;
@@ -81,24 +84,19 @@ export class MatSelectSearchComponent
     // If there is option to select all options then it should support multi select
     if (this.hasSelectAll) this.isMultiSelect = true;
     this.configMatOption();
-    this.subscriptions
-      .add(
-        this.matSelect.openedChange.subscribe(() => {
+    this.fullList = this.list;
+    this.searcher.initSearch(this.list, this.searchProperties);
+      this.subscriptions.add(this.matSelect.openedChange.subscribe(() => {
           const input = this.element.nativeElement;
           input.focus();
-          if (
-            (this.filteredList &&
-              this.filteredList.length === 0 &&
-              this.hasFilteredBefore) ||
-            this.clearSearchInput
-          ) {
-            input.value = '';
-            this.filtered.emit(this.fullList);
+          if ((this.filteredList && this.filteredList.length === 0 && this.hasFilteredBefore) || this.clearSearchInput) {
+              input.value = '';
+              this.filtered.emit(this.fullList);
           }
-        })
-      )
-      .add(this.filtered.subscribe(() => (this.isLoading = false)))
-      .add(
+      }));
+      this.subscriptions
+          .add(this.filtered.subscribe(() => (this.isLoading = false)));
+      this.subscriptions.add(
         this.matSelect.stateChanges
           .pipe(filter(() => this.hasSelectAll))
           .subscribe(() => {
@@ -111,7 +109,7 @@ export class MatSelectSearchComponent
             }
 
             const items = matOptions.slice(NON_ITEM_OPTIONS_COUNT);
-            const isAllItemsSelected = items.every((item) => item.selected);
+            const isAllItemsSelected = items.every(item => item.selected);
             if (isAllItemsSelected && items.length > NON_ITEM_OPTIONS_COUNT) {
               this.selectNativeSelectAllCheckbox();
             } else {
@@ -134,8 +132,8 @@ export class MatSelectSearchComponent
       return;
     }
 
-    const listWithoutConcatedValues = this.filteredList.map((item) => {
-      const itemCopy = { ...item };
+    const listWithoutConcatedValues = this.filteredList.map(item => {
+      const itemCopy = {...item};
       delete itemCopy['concatedValues'];
       return itemCopy;
     });
@@ -144,21 +142,13 @@ export class MatSelectSearchComponent
 
   stopCharPropagation(event: KeyboardEvent): void {
     const key = event.key;
-    const isTextControlKey =
-      key === ' ' ||
-      key === 'Home' ||
-      key === 'End' ||
-      (key >= 'a' && key <= 'z');
-    if (isTextControlKey) {
-      event.stopPropagation();
-    }
+    const isTextControlKey = key === ' ' || key === 'Home' || key === 'End' || (key >= 'a' && key <= 'z');
+    if (isTextControlKey) { event.stopPropagation(); }
   }
 
   private configMatOption(): void {
     if (!this.matOption) {
-      console.error(
-        '<lib-mat-select-search> must be placed inside a <mat-option> element'
-      );
+      console.error('<lib-mat-select-search> must be placed inside a <mat-option> element');
       return;
     }
     this.matOption.disabled = true;
@@ -176,36 +166,30 @@ export class MatSelectSearchComponent
     The old selected options are stored in selectedOptions and the new matSelect value is appended with selected options.
   */
   private configMultiSelect(): void {
-    this.subscriptions.add(
-      this.matSelect.optionSelectionChanges.subscribe((change) => {
-        const isSelectAllOption =
-          this.hasSelectAll && change.source.id === 'mat-option-1';
-        if (!change.isUserInput || isSelectAllOption) return;
-        const itemIndex = this.selectedOptions.indexOf(change.source.value);
-        if (itemIndex > -1) {
-          this.selectedOptions.splice(itemIndex, 1);
-        } else {
-          this.selectedOptions.push(change.source.value);
-        }
-        this.matSelect.value = [...this.selectedOptions];
+    this.subscriptions.add(this.matSelect.optionSelectionChanges.subscribe(change => {
+      const isSelectAllOption = this.hasSelectAll && change.source.id === 'mat-option-1';
+      if (!change.isUserInput || isSelectAllOption) return;
+      const itemIndex = this.selectedOptions.indexOf(change.source.value);
+      if (itemIndex > -1) {
+        this.selectedOptions.splice(itemIndex, 1);
+      } else {
+        this.selectedOptions.push(change.source.value);
+      }
+      this.matSelect.value = [...this.selectedOptions];
 
-        if (!this.hasSelectAll) return;
-        const selectedOptionsCount = this.matSelect.options.filter(
-          (option) => option.selected
-        ).length;
-        const isAllOptionsSelected =
-          selectedOptionsCount ===
-          this.matSelect.options.length - NON_ITEM_OPTIONS_COUNT;
-        if (isAllOptionsSelected) {
-          this.selectNativeSelectAllCheckbox();
-          return;
-        }
+      if (!this.hasSelectAll) return;
+      const selectedOptionsCount = this.matSelect.options.filter(option => option.selected).length;
+      const isAllOptionsSelected =
+        selectedOptionsCount === this.matSelect.options.length - NON_ITEM_OPTIONS_COUNT;
+      if (isAllOptionsSelected) {
+        this.selectNativeSelectAllCheckbox();
+        return;
+      }
 
-        if (this.nativeSelectAllCheckbox.getAttribute('checked')) {
-          this.deselectNativeSelectAllCheckbox();
-        }
-      })
-    );
+      if (this.nativeSelectAllCheckbox.getAttribute('checked')) {
+        this.deselectNativeSelectAllCheckbox();
+      }
+    }));
   }
 
   /*
@@ -227,31 +211,19 @@ export class MatSelectSearchComponent
     this.renderer.removeChild(nativeSelectAll, matPseudoCheckbox);
 
     this.nativeSelectAllCheckbox = this.renderer.createElement('input');
-    this.renderer.setAttribute(
-      this.nativeSelectAllCheckbox,
-      'type',
-      'checkbox'
-    );
+    this.renderer.setAttribute(this.nativeSelectAllCheckbox, 'type', 'checkbox');
     this.renderer.addClass(this.nativeSelectAllCheckbox, 'native-checkbox');
-    this.renderer.insertBefore(
-      nativeSelectAll,
-      this.nativeSelectAllCheckbox,
-      nativeSelectAll.childNodes[0]
-    );
+    this.renderer.insertBefore(nativeSelectAll, this.nativeSelectAllCheckbox, nativeSelectAll.childNodes[0]);
 
-    this.clickListenerSelectAll = this.renderer.listen(
-      nativeSelectAll,
-      'click',
-      () => {
-        if (this.nativeSelectAllCheckbox.getAttribute('checked')) {
-          this.deselectNativeSelectAllCheckbox();
-          this.deselectAlloptions();
-        } else {
-          this.selectNativeSelectAllCheckbox();
-          this.selectAllOptions();
-        }
+    this.clickListenerSelectAll = this.renderer.listen(nativeSelectAll, 'click', () => {
+      if (this.nativeSelectAllCheckbox.getAttribute('checked')) {
+        this.deselectNativeSelectAllCheckbox();
+        this.deselectAlloptions();
+      } else {
+        this.selectNativeSelectAllCheckbox();
+        this.selectAllOptions();
       }
-    );
+    });
   }
 
   private selectAllOptions(): void {
@@ -259,7 +231,7 @@ export class MatSelectSearchComponent
     const items = matOptions.toArray().slice(NON_ITEM_OPTIONS_COUNT);
 
     let nonSelectedItems: Record<string, string>[] = [];
-    items.forEach((item) => {
+    items.forEach(item => {
       if (!item.selected) nonSelectedItems.push(item.value);
     });
 
@@ -270,9 +242,9 @@ export class MatSelectSearchComponent
   private deselectAlloptions(): void {
     const matOptions = this.matSelect.options;
     const items = matOptions.toArray().slice(NON_ITEM_OPTIONS_COUNT);
-    const itemValues = items.map((item) => item.value);
+    const itemValues = items.map(item => item.value)
     this.matSelect.value = this.selectedOptions = this.selectedOptions.filter(
-      (option) => !itemValues.includes(option)
+      option => !itemValues.includes(option)
     );
   }
 
@@ -296,4 +268,3 @@ export class MatSelectSearchComponent
     this.subscriptions.unsubscribe();
     this.clickListenerSelectAll();
   }
-}

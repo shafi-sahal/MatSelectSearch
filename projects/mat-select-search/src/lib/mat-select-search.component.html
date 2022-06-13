@@ -2,7 +2,7 @@
   <input
     #input
     id="input"
-    placeholder="Search"
+    [placeholder]="searchPlaceHolder"
     autocomplete="off"
     (input)="filterList($event)"
     (keydown)="stopCharPropagation($event)">
