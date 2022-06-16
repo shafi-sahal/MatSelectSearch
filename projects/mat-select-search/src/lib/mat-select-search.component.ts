@@ -161,6 +161,7 @@ export class MatSelectSearchComponent
     if (this.fixOnTop) this.fixSearchBarOnTopWhileScroll();
   }
 
+
   /*
     This method is used to retain the old selected options after selecting an option from the new filtered list.
     The old selected options are stored in selectedOptions and the new matSelect value is appended with selected options.
@@ -268,3 +269,4 @@ export class MatSelectSearchComponent
     this.subscriptions.unsubscribe();
     this.clickListenerSelectAll();
   }
+}
