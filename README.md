@@ -161,7 +161,7 @@ Feedback and suggestions are also welcome, just mail me at: shafisahal99@gmail.c
 
 MatSelectSearch and it's services are free of cost. Any bug reports will be assessed and fixed without any cost. However if you feel this project has helped you, saved some time or had an impact in your business or projects, kindly consider making a donation to support the maintenance and further development of the project. Whatever the amount, we value it, be it small or big.
 
-![file:///home/shafi/Desktop/Buy%20Me%20a%20Coffee/bmc-button.png]
+![file:///home/shafi/Desktop/Buy%20Me%20a%20Coffee/bmc-button.png](https://www.buymeacoffee.com/shafisahal)
 
 ## Development
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.0.
