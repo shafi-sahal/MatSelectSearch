@@ -127,7 +127,7 @@ Place it below the ```<lib-mat-select-search-component>``` and set ```[hasSelect
 
 ```
 
-![Screenshot from 2021-07-19 16-15-53](https://user-images.githubusercontent.com/60147182/126148676-488ba629-16fd-4d69-a0fd-0066bed8e43c.png)``
+![Screenshot from 2021-07-19 16-15-53](<img width="545" alt="bmc-button" src="https://user-images.githubusercontent.com/60147182/178779062-59a55cad-945b-4769-bddd-34097e0673a5.png">/60147182/126148676-488ba629-16fd-4d69-a0fd-0066bed8e43c.png)``
 
   
 ## Inputs 
@@ -161,7 +161,7 @@ Feedback and suggestions are also welcome, just mail me at: shafisahal99@gmail.c
 
 MatSelectSearch and it's services are free of cost. Any bug reports will be assessed and fixed without any cost. However if you feel this project has helped you, saved some time or had an impact in your business or projects, kindly consider making a donation to support the maintenance and further development of the project. Whatever the amount, we value it, be it small or big.
 
-https://www.buymeacoffee.com/shafisahal
+![file:///home/shafi/Desktop/Buy%20Me%20a%20Coffee/bmc-button.png] (https://www.buymeacoffee.com/shafisahal)
 
 ## Development
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.0.
