@@ -157,7 +157,7 @@ Contributions are welcome, just open an issue and file a pull request.
 
 Feedback and suggestions are also welcome, just mail me at: shafisahal99@gmail.com
 
-MatSelectSearch and it's services are free of cost. Any bug reports will be assessed and fixed without any cost. However if you feel this project has helped you, saved some time or had an impact in your business or projects, kindly consider buying us a coffee to support the maintenance and further development of the project.
+If you feel this project has helped you, saved some time or had an impact in your business or projects, kindly consider buying us a coffee to support the maintenance and further development of the project.
 
 [<img width="200" alt="bmc-button" src="https://user-images.githubusercontent.com/60147182/178779062-59a55cad-945b-4769-bddd-34097e0673a5.png">](https://www.buymeacoffee.com/shafisahal)
 
